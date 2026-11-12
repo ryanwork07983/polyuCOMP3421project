@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The Workout: a private, ad-free workout planner and tracker. Your data stays in your browser.">
+  <meta name="theme-color" content="#e2531b">
+  <title>The Workout</title>
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash of the wrong colours.
+    try {
+      var s = JSON.parse(localStorage.getItem('the-workout:settings') || '{}');
+      if (s.theme === 'light' || s.theme === 'dark') document.documentElement.setAttribute('data-theme', s.theme);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Elements marked data-i18n get their English text swapped for the chosen language at start-up (app.js). -->
+  <a class="skip-link" href="#main" data-i18n>Skip to content</a>
+
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>
+      </span>
+      <span class="brand-name">The Workout</span>
+    </a>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="#/" data-nav="home"><span class="nav-icon" data-icon="home"></span><span class="nav-label" data-i18n>Home</span></a></li>
+      <li><a class="nav-link" href="#/exercises" data-nav="exercises"><span class="nav-icon" data-icon="dumbbell"></span><span class="nav-label" data-i18n>Exercises</span></a></li>
+      <li><a class="nav-link" href="#/plans" data-nav="plans"><span class="nav-icon" data-icon="clipboard"></span><span class="nav-label" data-i18n>Plans</span></a></li>
+      <li><a class="nav-link nav-link-log" href="#/log" data-nav="log"><span class="nav-icon" data-icon="play"></span><span class="nav-label" data-i18n>Log</span></a></li>
+      <li><a class="nav-link" href="#/history" data-nav="history"><span class="nav-icon" data-icon="chart"></span><span class="nav-label" data-i18n>History</span></a></li>
+      <li><a class="nav-link" href="#/settings" data-nav="settings"><span class="nav-icon" data-icon="settings"></span><span class="nav-label" data-i18n>Settings</span></a></li>
+    </ul>
+    <div class="nav-footer">
+      <span class="nav-icon" data-icon="shield"></span>
+      <p data-i18n>Private by design. Your data never leaves this browser.</p>
+    </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <div class="boot">
+      <div class="spinner" aria-hidden="true"></div>
+      <p data-i18n>Loading your workouts…</p>
+    </div>
+  </main>
+
+  <div id="rest-timer" class="rest-timer" hidden></div>
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <noscript>
+    <div class="noscript">The Workout needs JavaScript to run. Please enable it in your browser settings.</div>
+  </noscript>
+
+  <!-- Plain scripts (not ES modules) so the app also runs when index.html is opened straight from disk. -->
+  <script src="js/i18n.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/views/exercises.js"></script>
+  <script src="js/views/plans.js"></script>
+  <script src="js/views/log.js"></script>
+  <script src="js/views/history.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

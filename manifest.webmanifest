@@ -1,0 +1,13 @@
+{
+  "name": "The Workout",
+  "short_name": "Workout",
+  "description": "A private, ad-free workout planner and tracker. Your data stays in your browser.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#d9480f",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
